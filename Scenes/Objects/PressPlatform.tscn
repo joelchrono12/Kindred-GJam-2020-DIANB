@@ -1,0 +1,104 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/Objects/PressPlatform.gd" type="Script" id=1]
+[ext_resource path="res://PlatformsKindred.png" type="Texture" id=2]
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 7 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7, 2 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 7, 2 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "going_left"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlatformsKindred:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "going_right"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlatformsKindred:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("PlatformsKindred:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[node name="PressPlatform" type="KinematicBody2D"]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource( 1 )
+SPEED = 70
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="PlatformsKindred" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+vframes = 9
+frame = 5
+
+[node name="LeftPress" type="Area2D" parent="."]
+position = Vector2( -23, -11 )
+collision_layer = 2
+collision_mask = 66
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftPress"]
+shape = SubResource( 2 )
+
+[node name="RightPress" type="Area2D" parent="."]
+position = Vector2( 23, -11 )
+collision_layer = 2
+collision_mask = 66
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightPress"]
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/going_left = SubResource( 4 )
+anims/going_right = SubResource( 5 )
+anims/idle = SubResource( 6 )
+[connection signal="body_entered" from="LeftPress" to="." method="_on_LeftPress_body_entered"]
+[connection signal="body_exited" from="LeftPress" to="." method="_on_LeftPress_body_exited"]
+[connection signal="body_entered" from="RightPress" to="." method="_on_RightPress_body_entered"]
+[connection signal="body_exited" from="RightPress" to="." method="_on_RightPress_body_exited"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Night Sky background.png" type="Texture" id=1]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+scroll_base_scale = Vector2( 0.1, 0.2 )
+__meta__ = {
+"_edit_horizontal_guides_": [ -16.0, 105.487, 340.0 ],
+"_edit_vertical_guides_": [ 629.0 ]
+}
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+z_as_relative = false
+motion_mirroring = Vector2( 611, 339 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayer"]
+texture = ExtResource( 1 )
+centered = false

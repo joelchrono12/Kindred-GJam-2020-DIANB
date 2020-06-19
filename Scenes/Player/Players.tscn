@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Player/TechPlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Player/StrongPlayer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Player/QuickPlayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Player/Players.gd" type="Script" id=4]
+
+[node name="Players" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="TechPlayer" parent="." instance=ExtResource( 1 )]
+position = Vector2( 249.158, 106.551 )
+
+[node name="QuickPlayer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 173.181, 105.379 )
+SPEED = 200
+selected_player = 1
+
+[node name="StrongPlayer" parent="." instance=ExtResource( 2 )]
+position = Vector2( 98.7149, 105.674 )
+collision_mask = 64
+selected_player = 2

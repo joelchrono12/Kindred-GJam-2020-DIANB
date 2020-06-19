@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Menu/About Screen.gd" type="Script" id=1]
+[ext_resource path="res://Art/Menu/Night Sky background.png" type="Texture" id=2]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 247.266, 160.956 )
+texture = ExtResource( 2 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 14.0
+margin_top = 117.0
+margin_right = 518.0
+margin_bottom = 182.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer"]
+margin_right = 64.0
+margin_bottom = 65.0
+text = "Go Back"
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer"]
+margin_left = 68.0
+margin_top = 25.0
+margin_right = 416.0
+margin_bottom = 39.0
+text = "                                                                                       "
+
+[node name="Button2" type="Label" parent="CenterContainer/HBoxContainer"]
+margin_left = 420.0
+margin_right = 504.0
+margin_bottom = 65.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Follow me as
+Joeligj12 on:
+Twitter &
+Instagram"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 140.0
+margin_top = 7.0
+margin_right = 393.0
+margin_bottom = 293.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 253.0
+margin_bottom = 286.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Thank you for Playing!
+
+Every asset was made by:
+ Chrono IG (Joel Garcia).
+
+Game Engine: Godot
+Sprites: GIMP and Pixelorama
+Sound: Bosca Ceoil
+
+Made for the Kindred's Game Jam 2020!
+
+Controls:
+Arrows to move and jump
+Tab to swap between characters 
+Space to interact with objects
+R to restart
+Esc to go back to menu"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CenterContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]

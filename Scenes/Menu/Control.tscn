@@ -1,0 +1,168 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scripts/Menu/Control.gd" type="Script" id=1]
+[ext_resource path="res://Art/Menu/Night Sky background.png" type="Texture" id=2]
+[ext_resource path="res://Art/player/GameJamSpritesheet.png" type="Texture" id=3]
+[ext_resource path="res://Art/Menu/StartButton.png" type="Texture" id=4]
+[ext_resource path="res://Art/Menu/MenuOption.png" type="Texture" id=5]
+[ext_resource path="res://Art/Menu/GameTitle.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+resource_name = "menu"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CenterContainer/Sprite2:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1.5 ),
+"transitions": PoolRealArray( 1, 0.258816, 7.21 ),
+"update": 0,
+"values": [ Vector2( 6, 6 ), Vector2( 8, 8 ), Vector2( 6, 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CenterContainer/Sprite3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -8, 8 ), Vector2( -6, 6 ), Vector2( -8, 8 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CenterContainer/Sprite4:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -8, 6 ), Vector2( -6, 8 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CenterContainer/Sprite5:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ) ]
+}
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.16632
+margin_right = 1.16626
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CenterContainer"]
+position = Vector2( 245.401, 135.814 )
+scale = Vector2( 0.90302, 0.91573 )
+texture = ExtResource( 2 )
+
+[node name="Sprite5" type="Sprite" parent="CenterContainer"]
+position = Vector2( 264.951, 68.0416 )
+scale = Vector2( 0.885714, 0.885714 )
+texture = ExtResource( 6 )
+
+[node name="Sprite2" type="Sprite" parent="CenterContainer"]
+position = Vector2( 54.3755, 210.917 )
+scale = Vector2( 6, 6 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 3
+
+[node name="Sprite3" type="Sprite" parent="CenterContainer"]
+position = Vector2( 478.84, 153.503 )
+rotation = 6.10865
+scale = Vector2( -8, 8 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 3
+frame = 2
+
+[node name="Sprite4" type="Sprite" parent="CenterContainer"]
+position = Vector2( 406.321, 239.777 )
+rotation = 0.349066
+scale = Vector2( -6.85714, 7.14286 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 3
+frame = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 216.0
+margin_top = 27.0
+margin_right = 315.0
+margin_bottom = 272.0
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 99.0
+margin_bottom = 99.0
+text = "
+
+
+
+
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartGame" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+margin_top = 103.0
+margin_right = 99.0
+margin_bottom = 153.0
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource( 4 )
+
+[node name="QuitGame" type="TextureButton" parent="CenterContainer/VBoxContainer"]
+margin_top = 157.0
+margin_right = 99.0
+margin_bottom = 197.0
+texture_normal = ExtResource( 5 )
+
+[node name="FullScreen" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 201.0
+margin_right = 99.0
+margin_bottom = 221.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Full Screen"
+flat = true
+
+[node name="About" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 225.0
+margin_right = 99.0
+margin_bottom = 245.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Controls"
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/menu = SubResource( 1 )
+[connection signal="pressed" from="CenterContainer/VBoxContainer/StartGame" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/QuitGame" to="." method="_on_QuitGame_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/FullScreen" to="." method="_on_FullScreen_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/About" to="." method="_on_About_pressed"]
